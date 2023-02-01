@@ -22,7 +22,7 @@ private final RestTemplate restTemplate;
         customerRepository.saveAndFlush(customer);
 
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
-                "http://localhost:8081/api/fraud-check/{customerId}", FraudCheckResponse.class , customer.getId());
+                "http://FRAUD/api/fraud-check/{customerId}", FraudCheckResponse.class , customer.getId());
         if(fraudCheckResponse.isFraudster()){
             throw new IllegalStateException("fraudster");
         }
